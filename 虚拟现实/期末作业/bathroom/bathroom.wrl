@@ -1,0 +1,978 @@
+#VRML V2.0 utf8
+NavigationInfo {
+	speed 0.5
+}
+Transform {
+	translation 0 150 0
+	rotation 0 0 0 0
+	children [
+		        Viewpoint {
+				position -30 0 -280		 #BATHROOM far
+				orientation	0 1 0 3.14
+				description	"1"
+				jump FALSE
+		    	}        
+	        	Viewpoint {
+				position 0 0 -100		 #COME IN
+				orientation	0 1 0 3.14
+				description	"2"
+				jump FALSE
+		    	} 
+				Viewpoint {
+				position -100 0 0		 #LEFT
+				orientation	0 1 0 -1.57
+				description	"3"
+				jump FALSE
+		    	}
+				Viewpoint {
+				position -200 0 0		 #BACK
+				orientation	0 1 0 -1.57
+				description	"4"
+				jump FALSE
+		    	}
+				Viewpoint {
+				position 80 0 0		 #BATHTUB
+				orientation	0 1 0 1.57
+				description	"5"
+				jump FALSE
+		    	}
+				Viewpoint {
+				position 0 0 0		 #FUSHI
+				orientation 0 1 0 0
+				description	"6"
+				jump FALSE
+		    	}
+				Viewpoint {
+				position 0 0 -50		 #FUSHI
+				orientation 0 1 0 0
+				description	"7"
+				jump FALSE
+		    	}   
+			
+	]
+}
+
+DEF	floorwall Transform	{
+	translation	0 0 0
+	children [
+		Transform {
+			translation	-85 0 -50
+			children [
+			
+		Shape {
+			geometry Box {
+				size 370 5 300							    
+			}
+			appearance DEF m1 Appearance {
+				material Material {
+					ambientIntensity 0
+					shininess 0
+				}
+				texture	ImageTexture {
+					url	"maps/floor.jpg"
+				}
+				textureTransform TextureTransform {
+					scale 3 3
+				}
+			}
+		
+	}
+]
+		}
+		Transform {
+			translation	100 148 -50
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 300
+					}
+					appearance DEF wall Appearance {
+						material Material {
+							ambientIntensity 0
+							shininess 0
+						}
+						texture	ImageTexture {
+							url	"maps/wall-3.jpg"
+						}
+					}
+				}
+
+			]
+		}
+		Transform {
+			translation	-270 148 -50
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 300
+					}
+					appearance USE wall
+				}
+
+			]
+		}
+		Transform {
+			translation	55 148 -195
+			children [
+				Shape {
+					geometry Box {
+						size 80 300 10
+						
+					}
+					appearance USE wall
+				}
+			]
+		}
+		Transform {
+			translation	-172.5 148 -195
+			children [
+				Shape {
+					geometry Box {
+						size 195 300 10
+					}
+					appearance USE wall
+				}
+			]
+
+		}
+		Transform {
+			translation	-30 253 -195
+			children [
+				Shape {
+					geometry Box {
+						size 95 90 10
+					}
+					appearance USE wall
+				}
+			]
+		}
+		DEF wall2 Transform {
+			translation	-85 148 100
+			children [
+				Shape {
+					geometry Box {
+						size 370 300 0.5
+					}
+					appearance  Appearance {
+						material Material {
+							ambientIntensity 0
+						}
+						texture	ImageTexture {
+							url	"maps/wall-3.jpg"
+						}
+					}
+				}
+			]
+		}
+		DEF	dec Group {
+			children [
+		Transform {
+			translation	0 50 99.5
+			children [
+				Shape {
+					geometry Box {
+						size 200 100 0.5
+					}
+					appearance DEF a4 Appearance {
+						material Material {
+							ambientIntensity 0
+						}
+						texture	ImageTexture {
+							url	"maps/wall1.jpg"
+						}
+					}
+				}
+			]
+		}
+		Transform {
+			translation	94.2 50 -50
+			children [
+				Shape {
+					geometry Box {
+						size 0.5 100 298
+					}
+					appearance USE a4
+				}
+			]	
+		}
+		Transform {
+			translation	55 50 -190
+			children [
+				Shape {
+					geometry Box {
+						size 80 100 0.5
+					}
+					appearance USE a4
+				}
+			]
+		}
+		Transform {
+			translation	-87.5 50 -190
+			children [
+				Shape {
+					geometry Box {
+						size 25 100 0.5
+					}
+					appearance USE a4
+				}
+			]
+		}
+	]
+	}
+
+	]
+}
+
+EXTERNPROTO	sink[
+	  field	SFRotation rotation		
+	  field	SFVec3f	scale
+	  field	SFVec3f	position
+]
+
+"sink1.wrl"
+
+sink {
+	rotation 0 1 0 3.14
+	scale 0.7 0.7 0.68
+	position  52 5 -30
+}
+
+DEF sinkleft Transform {	
+    scale	0.6 0.7 0.75  
+	translation	50 10 -20
+	children [
+		Shape {
+			appearance DEF a5 Appearance {
+				material Material {
+					ambientIntensity 0
+				}
+				texture	ImageTexture {
+					url	"maps/sink3.jpg"
+				}
+			}
+		}
+		Shape {
+			appearance DEF a6 Appearance {
+				material Material {
+					diffuseColor 0 0 0
+							specularColor .29 .3 .29
+							ambientIntensity 1
+							shininess .353
+				}
+				texture	ImageTexture {
+					url	"maps/sink5.jpg"
+				}
+			}
+		}
+		DEF b Transform {
+			translation	0 105 110
+			children [
+				Shape {
+					geometry Box {
+						size 120 10 90
+					}
+					appearance USE a5
+				}
+			]
+		}
+		Transform {
+			
+			translation	0 95 110 
+			children [
+				Shape {
+					geometry Box {
+						size 120 10 90
+					}
+					appearance Appearance {
+						material Material {
+							diffuseColor .36 .36 .36
+							specularColor .94 .94 .94
+							emissiveColor 1 1 1
+							ambientIntensity 0
+							shininess .23
+							transparency .68
+						}
+					}
+				}
+
+			]
+
+		}
+		Transform {
+			translation	0 40 110 
+			children [
+				Shape {
+					geometry Box {
+						size 120 100 80
+					}
+					appearance Appearance {
+						material Material {
+							diffuseColor 0 0 0
+							specularColor .29 .3 .29
+							ambientIntensity 1
+							shininess .353
+						}
+					}
+				}
+			]
+
+		}
+		Transform {
+			translation	-40 25 -10
+			children [
+				Shape {
+					geometry Box{
+						size 1 85 175
+					}
+					appearance USE a6
+				}
+			]
+		}
+	]
+}
+
+DEF	mirror Transform {
+	translation	83 150 -30
+	children [
+		Transform {
+			translation	0 0 0
+			children [
+				Shape {
+					geometry Box {
+						size 1 130 100
+					}
+					appearance Appearance {
+						material Material {
+							diffuseColor .36 .36 .36
+							specularColor 1 1 1
+							emissiveColor 1 1 1
+							ambientIntensity 1
+							shininess .439
+							transparency .714
+						}
+					}
+				}
+			]
+		}
+		Transform {
+			translation	1 0 0
+			children [
+				Shape {
+					geometry Box {
+						size 0.5 130 100
+					}
+					appearance Appearance {
+						material Material {
+							diffuseColor .15 .15 .15
+							specularColor .92 .91 .89
+							ambientIntensity 0
+							shininess .06
+						}
+					}
+				}
+			]
+		}
+		DEF c1 Transform {
+			translation	0 0 -51
+			children [
+				Shape {
+					geometry Cylinder {
+						radius 3
+						height 135
+					}
+					appearance DEF a2 Appearance {
+						material Material {
+							diffuseColor .35 .16 .12
+							specularColor .21 .11 0
+							ambientIntensity .0533
+							shininess .05
+						}
+						texture	ImageTexture {
+							url	"maps/mirror.jpg"
+						}
+					}
+				}
+			]
+		}
+		Transform {
+			translation	0 0 102
+			children USE c1
+		}
+		DEF	c2 Transform {
+			translation	0 66 0
+			rotation 1 0 0 1.57
+			children [
+				Shape {
+					geometry Cylinder {
+						radius 3
+						height 105
+					}
+					appearance USE a2
+				}
+			]
+		}
+		Transform {
+			translation	0 -132 0
+			children USE c2
+		}
+	]
+}
+
+
+DEF	door Transform {
+	translation	15 105 -195
+	children [
+		DEF	doorframe1 Transform	{
+			translation	0 0 0
+			children [
+				Shape {
+					geometry Box {
+						size 8 210 14
+					}
+					appearance DEF a7 Appearance {
+						material Material {}
+						texture	ImageTexture {
+							url	"maps/door1.jpg"
+						}
+					}
+				}
+
+			]
+		}
+		Transform {
+			translation	-90 0 0
+			children USE doorframe1
+		}
+		Transform {
+			translation	-45 105 0
+			children [
+				Shape {
+					geometry Box {
+						size 98 8 14
+					}
+					appearance USE a7
+				}
+			]
+		}
+DEF	door1	Transform {
+			translation	0 0 0
+			rotation 0 0 0 0
+			children [
+					Transform {
+			translation	-45 1 0
+			children [
+				Shape {
+					geometry Box {
+						size 81 200 10
+					}
+					appearance USE a7
+				}
+
+			]
+		}
+		Transform {
+			rotation 1 0 0 1.57
+			translation	-75 0 0
+			children [
+				Shape {
+					geometry Cylinder {
+						radius 3.5
+						height 18
+					}
+					appearance Appearance {
+						material Material {
+							diffuseColor .15 .15 .15
+							specularColor .92 .91 .89
+							ambientIntensity 0
+							shininess .06
+						}
+					}
+				}
+			]
+		}
+		
+
+			]
+		}
+	
+	]
+}
+
+
+EXTERNPROTO	toilet[
+	field SFRotation rotation
+	field SFVec3f scale
+	field SFVec3f position
+]
+
+"toilet.wrl"
+
+toilet {
+	rotation 0 1 0 -1.57
+	scale  1.3 1.2 1.4
+	position -55 0 50
+}
+
+EXTERNPROTO	bin[
+	field SFRotation rotation
+	field SFVec3f scale
+	field SFVec3f position
+]
+"bin.wrl"
+bin	{
+	rotation 0 0 1 0
+	scale 4 4 4
+	position -70 0 70
+}
+
+
+EXTERNPROTO	light[
+	field SFRotation rotation
+	field SFVec3f scale
+	field SFVec3f position
+]
+
+"light.wrl"
+light {
+	rotation 0 1 0 0
+	scale 1 1 1 
+	position  5 200 90
+
+}
+EXTERNPROTO	bathtub[
+	  field	SFRotation rotation		
+	  field	SFVec3f	scale
+	  field	SFVec3f	position
+]
+
+"bathtub.wrl"
+bathtub {
+	rotation 0 1 0 1.57
+	scale 0.2 0.2 0.2
+	position  -200 55 0
+}
+
+DEF vase Transform {
+	scale 2 3 2
+	translation	70 85 70
+	children [
+
+  Shape
+  {
+   appearance Appearance
+   {
+    material DEF m2 Material
+    {
+	 ambientIntensity 0
+	 emissiveColor .278 .275 .275
+    }
+   }
+  }
+  Transform	{
+	  translation		-2.803092 0.663159 1.704838
+   rotation		0.000000 0.000000 0.000000 0.000000
+   scale		1.110593 0.805650 1.110593
+   scaleOrientation	0.0  0.0  1.0  0.0
+	  children [
+  Shape
+  {
+   geometry DEF pCylinder1_0Geo IndexedFaceSet
+   {
+    convex FALSE
+    solid FALSE
+    coord DEF pCylinder1GeoPoints Coordinate
+    {
+     point [
+      2.685 -0.148 -0.872,
+      2.284 -0.148 -1.659,
+      1.659 -0.148 -2.284,
+      0.872 -0.148 -2.685,
+      0.000 -0.148 -2.823,
+      -0.872 -0.148 -2.685,
+      -1.659 -0.148 -2.284,
+      -2.284 -0.148 -1.659,
+      -2.685 -0.148 -0.872,
+      -2.823 -0.148 0.000,
+      -2.685 -0.148 0.872,
+      -2.284 -0.148 1.659,
+      -1.659 -0.148 2.284,
+      -0.872 -0.148 2.685,
+      -0.000 -0.148 2.823,
+      0.872 -0.148 2.685,
+      1.659 -0.148 2.284,
+      2.284 -0.148 1.659,
+      2.685 -0.148 0.872,
+      2.823 -0.148 0.000,
+      2.685 0.148 -0.872,
+      2.284 0.148 -1.659,
+      1.659 0.148 -2.284,
+      0.872 0.148 -2.685,
+      0.000 0.148 -2.823,
+      -0.872 0.148 -2.685,
+      -1.659 0.148 -2.284,
+      -2.284 0.148 -1.659,
+      -2.685 0.148 -0.872,
+      -2.823 0.148 0.000,
+      -2.685 0.148 0.872,
+      -2.284 0.148 1.659,
+      -1.659 0.148 2.284,
+      -0.872 0.148 2.685,
+      -0.000 0.148 2.823,
+      0.872 0.148 2.685,
+      1.659 0.148 2.284,
+      2.284 0.148 1.659,
+      2.685 0.148 0.872,
+      2.823 0.148 0.000,
+      0.000 -0.148 0.000,
+      0.000 0.148 0.000
+     ]
+    }
+    coordIndex [
+     0 1 21 20 -1, 
+     1 2 22 21 -1, 
+     2 3 23 22 -1, 
+     3 4 24 23 -1, 
+     4 5 25 24 -1, 
+     5 6 26 25 -1, 
+     6 7 27 26 -1, 
+     7 8 28 27 -1, 
+     8 9 29 28 -1, 
+     9 10 30 29 -1, 
+     10 11 31 30 -1, 
+     11 12 32 31 -1, 
+     12 13 33 32 -1, 
+     13 14 34 33 -1, 
+     14 15 35 34 -1, 
+     15 16 36 35 -1, 
+     16 17 37 36 -1, 
+     17 18 38 37 -1, 
+     18 19 39 38 -1, 
+     19 0 20 39 -1, 
+     1 0 40 -1, 
+     2 1 40 -1, 
+     3 2 40 -1, 
+     4 3 40 -1, 
+     5 4 40 -1, 
+     6 5 40 -1, 
+     7 6 40 -1, 
+     8 7 40 -1, 
+     9 8 40 -1, 
+     10 9 40 -1, 
+     11 10 40 -1, 
+     12 11 40 -1, 
+     13 12 40 -1, 
+     14 13 40 -1, 
+     15 14 40 -1, 
+     16 15 40 -1, 
+     17 16 40 -1, 
+     18 17 40 -1, 
+     19 18 40 -1, 
+     0 19 40 -1, 
+     20 21 41 -1, 
+     21 22 41 -1, 
+     22 23 41 -1, 
+     23 24 41 -1, 
+     24 25 41 -1, 
+     25 26 41 -1, 
+     26 27 41 -1, 
+     27 28 41 -1, 
+     28 29 41 -1, 
+     29 30 41 -1, 
+     30 31 41 -1, 
+     31 32 41 -1, 
+     32 33 41 -1, 
+     33 34 41 -1, 
+     34 35 41 -1, 
+     35 36 41 -1, 
+     36 37 41 -1, 
+     37 38 41 -1, 
+     38 39 41 -1, 
+     39 20 41 -1
+    ]
+   }
+   appearance Appearance {
+	   material	USE	m2
+   }
+  }
+]
+}
+Transform {
+	translation		-2.803395 6.062759 1.726262
+   rotation		0.000000 0.000000 0.000000 0.000000
+   scale		1.052081 1.052081 1.052081
+   scaleOrientation	0.0  0.0  1.0  0.0
+	children [
+  Shape
+  {
+   geometry DEF pPipe1_0Geo IndexedFaceSet
+   {
+    convex FALSE
+    solid FALSE
+    coord DEF pPipe1GeoPoints Coordinate
+    {
+     point [
+      2.956 -5.244 -0.000,
+      2.811 -5.244 -0.914,
+      2.392 -5.244 -1.738,
+      1.738 -5.244 -2.392,
+      0.914 -5.244 -2.811,
+      0.000 -5.244 -2.956,
+      -0.914 -5.244 -2.811,
+      -1.738 -5.244 -2.392,
+      -2.392 -5.244 -1.738,
+      -2.811 -5.244 -0.914,
+      -2.956 -5.244 -0.000,
+      -2.811 -5.244 0.914,
+      -2.392 -5.244 1.738,
+      -1.738 -5.244 2.392,
+      -0.914 -5.244 2.811,
+      -0.000 -5.244 2.956,
+      0.914 -5.244 2.811,
+      1.738 -5.244 2.392,
+      2.392 -5.244 1.738,
+      2.811 -5.244 0.914,
+      3.399 4.777 0.000,
+      3.233 4.777 -1.050,
+      2.750 4.777 -1.998,
+      1.998 4.777 -2.750,
+      1.050 4.777 -3.233,
+      0.000 4.777 -3.399,
+      -1.050 4.777 -3.233,
+      -1.998 4.777 -2.750,
+      -2.750 4.777 -1.998,
+      -3.233 4.777 -1.050,
+      -3.399 4.777 -0.000,
+      -3.233 4.777 1.050,
+      -2.750 4.777 1.998,
+      -1.998 4.777 2.750,
+      -1.050 4.777 3.233,
+      -0.000 4.777 3.399,
+      1.050 4.777 3.233,
+      1.998 4.777 2.750,
+      2.750 4.777 1.998,
+      3.233 4.777 1.050,
+      3.629 4.777 0.000,
+      3.451 4.777 -1.121,
+      2.936 4.777 -2.133,
+      2.133 4.777 -2.936,
+      1.121 4.777 -3.451,
+      0.000 4.777 -3.629,
+      -1.121 4.777 -3.451,
+      -2.133 4.777 -2.936,
+      -2.936 4.777 -2.133,
+      -3.451 4.777 -1.121,
+      -3.629 4.777 0.000,
+      -3.451 4.777 1.121,
+      -2.936 4.777 2.133,
+      -2.133 4.777 2.936,
+      -1.121 4.777 3.451,
+      0.000 4.777 3.629,
+      1.121 4.777 3.451,
+      2.133 4.777 2.936,
+      2.936 4.777 2.133,
+      3.451 4.777 1.121,
+      3.156 -5.244 -0.000,
+      3.002 -5.244 -0.975,
+      2.553 -5.244 -1.855,
+      1.855 -5.244 -2.553,
+      0.975 -5.244 -3.002,
+      0.000 -5.244 -3.156,
+      -0.975 -5.244 -3.002,
+      -1.855 -5.244 -2.553,
+      -2.553 -5.244 -1.855,
+      -3.002 -5.244 -0.975,
+      -3.156 -5.244 0.000,
+      -3.002 -5.244 0.975,
+      -2.553 -5.244 1.855,
+      -1.855 -5.244 2.553,
+      -0.975 -5.244 3.002,
+      0.000 -5.244 3.156,
+      0.975 -5.244 3.002,
+      1.855 -5.244 2.553,
+      2.553 -5.244 1.855,
+      3.002 -5.244 0.975
+     ]
+    }
+    coordIndex [
+     1 0 20 21 -1, 
+     2 1 21 22 -1, 
+     3 2 22 23 -1, 
+     4 3 23 24 -1, 
+     5 4 24 25 -1, 
+     6 5 25 26 -1, 
+     7 6 26 27 -1, 
+     8 7 27 28 -1, 
+     9 8 28 29 -1, 
+     10 9 29 30 -1, 
+     11 10 30 31 -1, 
+     12 11 31 32 -1, 
+     13 12 32 33 -1, 
+     14 13 33 34 -1, 
+     15 14 34 35 -1, 
+     16 15 35 36 -1, 
+     17 16 36 37 -1, 
+     18 17 37 38 -1, 
+     19 18 38 39 -1, 
+     0 19 39 20 -1, 
+     21 20 40 41 -1, 
+     22 21 41 42 -1, 
+     23 22 42 43 -1, 
+     24 23 43 44 -1, 
+     25 24 44 45 -1, 
+     26 25 45 46 -1, 
+     27 26 46 47 -1, 
+     28 27 47 48 -1, 
+     29 28 48 49 -1, 
+     30 29 49 50 -1, 
+     31 30 50 51 -1, 
+     32 31 51 52 -1, 
+     33 32 52 53 -1, 
+     34 33 53 54 -1, 
+     35 34 54 55 -1, 
+     36 35 55 56 -1, 
+     37 36 56 57 -1, 
+     38 37 57 58 -1, 
+     39 38 58 59 -1, 
+     20 39 59 40 -1, 
+     41 40 60 61 -1, 
+     42 41 61 62 -1, 
+     43 42 62 63 -1, 
+     44 43 63 64 -1, 
+     45 44 64 65 -1, 
+     46 45 65 66 -1, 
+     47 46 66 67 -1, 
+     48 47 67 68 -1, 
+     49 48 68 69 -1, 
+     50 49 69 70 -1, 
+     51 50 70 71 -1, 
+     52 51 71 72 -1, 
+     53 52 72 73 -1, 
+     54 53 73 74 -1, 
+     55 54 74 75 -1, 
+     56 55 75 76 -1, 
+     57 56 76 77 -1, 
+     58 57 77 78 -1, 
+     59 58 78 79 -1, 
+     40 59 79 60 -1, 
+     61 60 0 1 -1, 
+     62 61 1 2 -1, 
+     63 62 2 3 -1, 
+     64 63 3 4 -1, 
+     65 64 4 5 -1, 
+     66 65 5 6 -1, 
+     67 66 6 7 -1, 
+     68 67 7 8 -1, 
+     69 68 8 9 -1, 
+     70 69 9 10 -1, 
+     71 70 10 11 -1, 
+     72 71 11 12 -1, 
+     73 72 12 13 -1, 
+     74 73 13 14 -1, 
+     75 74 14 15 -1, 
+     76 75 15 16 -1, 
+     77 76 16 17 -1, 
+     78 77 17 18 -1, 
+     79 78 18 19 -1, 
+     60 79 19 0 -1
+    ]
+   }
+   appearance Appearance {
+	   material	USE	m2
+   }
+  }
+]
+
+}
+Transform {
+	translation	-2 15 2
+	children [
+		Billboard {
+			children [
+		Transform {
+			translation 0 0 0
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							diffuseColor .6 .6 .6
+							emissiveColor .1 .1 .1
+							ambientIntensity .1
+							shininess .6
+							specularColor 1 1 1
+							transparency 0
+						}
+						texture	ImageTexture {
+							url	"maps/flower2.png"
+						}
+					}
+					geometry Box {
+						size 30 30 1
+					}
+
+				}
+			]
+		}
+	]
+		}
+]
+}
+]							  
+}
+
+
+DEF	doo Transform {
+	translation	0 0 0
+	children [
+		Transform {
+			children [
+				Shape {
+					geometry Box {
+						size  0 0 0
+					}
+				}
+			]
+		}
+	]
+}
+
+
+Transform {
+	rotation 0 0 1 -0.52
+	children [
+Viewpoint {
+	orientation	0 1 0 -1.57
+	position -500 200 0
+}
+]
+}
+DEF	sensor ProximitySensor {					  #接近传感器设定感知区域
+	 center 15 105 -95
+			size 200 306 400
+		}
+
+
+DEF	openTime TimeSensor	{ cycleInterval	2 loop FALSE }
+DEF	openDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 0, 0 1 0 1.571]
+}
+
+DEF	closeTime TimeSensor { cycleInterval 2 loop FALSE }
+DEF	closeDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 1.571, 0 1 0 0]
+}
+
+#ROUTE touchDoor.touchTime TO openTime.startTime
+#ROUTE openTime.fraction_changed	TO openDoor.set_fraction
+#ROUTE openDoor.value_changed TO	door1.rotation
+
+
+ROUTE sensor.enterTime TO openTime.startTime
+ROUTE openTime.fraction_changed TO	openDoor.set_fraction
+ROUTE openDoor.value_changed TO door1.rotation
+
+ROUTE sensor.exitTime TO closeTime.startTime
+ROUTE closeTime.fraction_changed TO	closeDoor.set_fraction
+ROUTE closeDoor.value_changed TO door1.rotation
+

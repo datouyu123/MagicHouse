@@ -1,0 +1,108 @@
+#VRML V2.0 utf8
+
+DEF floor Transform {
+			translation	0 -15 0 
+			children [
+				Shape {
+					geometry Box {
+					  size 1500 10 1700
+					}
+					appearance Appearance {
+						material Material {
+							ambientIntensity 0
+							shininess 0
+						}
+					texture	ImageTexture {
+					url	"livingroom/maps/floor.jpg"
+				}
+				textureTransform TextureTransform {
+					scale 3 3
+				}
+					}
+				}
+			]
+		}
+		DEF	wall Transform {	
+			translation	-460 148 855
+			children [
+				Shape {
+					geometry Box {
+					   size	580 300 5
+					}
+					appearance DEF walls Appearance {
+						material Material {
+							ambientIntensity 0
+							shininess 0
+						}
+						texture	ImageTexture {
+							url	"maps/wall-1.jpg"
+						}
+					}
+				}
+
+			]
+		}
+		Transform {
+			translation	360 148 855
+			children [
+				Shape {
+					geometry Box {
+					   size	780 300 5
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+		Transform {
+		translation -170 0 855
+		 scale 1.2 1.2 1
+		 rotation	0 1 0 0
+		children	[
+			 Inline {
+			   url "door.wrl"
+		  }
+		 ]
+		}
+		Transform {
+			translation	0 148 -850
+			children [
+				Shape {
+					geometry Box {
+					   size	1500 300 5
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+		Transform {
+			translation	750 148 0
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 1700
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+		Transform {
+			translation	-750 148 0
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 1700
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+				 Viewpoint {
+		position 0 2700 0
+		orientation	1 0 0 -1.57
+		description	"godview"
+		jump FALSE
+		}

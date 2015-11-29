@@ -1,0 +1,177 @@
+#VRML V2.0 utf8
+
+Inline {
+	url "wall/wall.wrl"
+}
+Group {	#bed
+	children [
+		Transform {		  
+			children [
+				Inline {
+					url "bed/bed.wrl"
+				}
+			]
+		}
+	]
+}
+Group {	#chest
+	children [
+		Transform {
+			translation 0 0 240
+			children [
+				Inline {
+					url "chest/closet.wrl"
+				}
+			]
+		}
+		Transform {
+			translation 0 0 180
+			rotation 0 1 0 1.57	
+			children [
+				Inline {
+					url "chest/small.wrl"
+				}
+			]
+		}
+	]
+}
+Group {	#element
+	children [
+		Transform {
+			translation 430 20 50
+			rotation	0 1 0 3.14 
+			scale	0.5 0.5 0.5
+			children [
+				Inline {
+					url "element/sink1.wrl"
+				}
+			]
+		}
+		Transform {
+			translation 370 0 5
+			rotation	0 1 0 -3.14 
+			children [
+				Inline {
+					url "element/toilet.wrl"
+				}
+			]
+		}
+		Transform {
+			translation 370 255 150
+			rotation	0 1 0 -1.57 
+			children [
+				Inline {
+					url "element/hold.wrl"
+				}
+			]
+		}
+
+		Transform {
+			translation 430 -10 260
+			rotation	0 1 0 -1.57 
+			scale 6 6 6
+			children [
+				Inline {
+					url "element/flower.wrl"
+				}
+			]
+		}
+
+		Transform {
+			translation 150 200 0
+			scale 6 6 6
+			children [
+				Inline {
+					url "element/clock.wrl"
+				}
+			]
+		}
+	]
+}
+Group {#door
+	children [
+		Transform {
+			translation 200 0 300
+			children [
+				Inline {
+					url "door/woodenDoor.wrl"
+				}
+			]
+		}
+		Transform {
+			translation 305 0 30
+			rotation	0 1 0 -1.571 
+			children [
+				Inline {
+					url "door/plasticDoor.wrl"
+				}
+			]
+		}
+
+		Transform {
+			translation	310 0 130
+			rotation 0 1 0 -1.571
+			children [
+				Inline {
+					url	"door/glassDoor.wrl"
+				}
+			]
+		}
+	]
+}
+
+Viewpoint {
+ position 235 150 400
+ orientation 0 0 0 0  
+}
+Viewpoint {
+ position 235 150 300
+ orientation 0 0 0 0
+ description "1"
+}
+Viewpoint {
+ position 235 150 200
+ orientation 0 0 0 0
+ description "1"
+}
+Viewpoint {
+ position 100 150 200
+ orientation 0 1 0 3.14 
+ description "1"
+}	   
+Viewpoint {
+ position 235 150 200
+ orientation 0 0 0 0
+ description "1"
+}
+Viewpoint {
+ position 300 150 200
+ orientation 0 0 0 0 
+ orientation 0 1 0 -1.571 
+ description "1"
+}
+Viewpoint {
+ position 400 150 200
+ orientation 0 0 0 0   
+ description "1"
+}
+Viewpoint {
+ position 300 150 200
+ orientation 0 0 0 0   
+ description "1"
+}
+Viewpoint {
+ position 235 150 200
+ orientation 0 0 0 0
+ description "1"
+}
+Viewpoint {
+ position 235 150 100
+ orientation 0 1 0 -1.571
+ description "1"
+}
+Viewpoint {
+ position 230 150 400
+ orientation 0 0 0 0
+ description "1"
+}

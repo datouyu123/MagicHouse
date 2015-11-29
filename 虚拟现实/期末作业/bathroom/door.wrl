@@ -1,0 +1,134 @@
+#VRML V2.0 utf8
+
+Transform {           #door
+   translation 0 0 0
+   scale 1 1 1
+   rotation	0 0 0 0
+   children	[			   
+	   Transform {
+		   translation 0 122 0
+		   scale 1 1 1
+		   children	[
+			   DEF kuang Shape {
+				   geometry	Box	{
+					   size	5 250 15
+				   }
+				   appearance Appearance {
+					   material Material {
+						   diffuseColor .384 .416 .435
+						   specularColor .76 .74 .59
+						   ambientIntensity .0933
+						   shininess .07
+						   emissiveColor .514 .525 .533
+					   }
+				   }
+			   }
+		   ]
+
+	   }
+	   Transform {
+		   translation 115 122 0
+		   scale 1 1 1
+		   children	[
+			   USE kuang
+			  
+		   ]
+
+	   }
+	   Transform {
+		   translation 60 244 0
+		   scale 24 0.04 1
+		   children	[
+			   USE kuang	  
+		   ]
+	   }
+	   Transform {
+		   translation 60 1 0
+		   scale 24 0.03 1
+		   children	[
+			   USE kuang	  
+		   ]
+	   }
+	 DEF Door Transform {
+		   translation 0 125 0
+		   
+		   children	[
+			    Transform {
+				   translation 58 -4 0
+				   rotation	0 1 0 0
+				   children	[
+					   Shape {
+						   geometry	Box	{
+							   size	110 235 7
+
+						   }
+						   appearance Appearance {
+#							   material Material {
+#								   diffuseColor .06 .59 .21
+#								   specularColor 0 .76 .83
+#								   emissiveColor .01 .08 .09
+#								   ambientIntensity .0533
+#								   shininess .12
+#							   }
+							   	texture ImageTexture {
+									url	"maps/door.png"
+								} 
+						   }
+					   }
+					   Transform {
+						   translation 40 0 6
+						   scale 1.8 20 2 
+						   children	[
+							   Shape {
+								   geometry Sphere{
+								     radius	2
+								   }
+								   appearance Appearance {
+									   material Material {
+										   diffuseColor .761 .69 .663
+										   specularColor .77 .77 .77
+										   ambientIntensity .25
+										   shininess .6
+									   }
+								   }
+								   
+							   }
+						   ]
+					   }
+				   ]
+			   }
+			   DEF touchDoor TouchSensor {}
+  
+#			  DEF rotateDoor CylinderSensor	{
+#    			  autoOffset TRUE
+# 				  minAngle 0
+#				  maxAngle 1.57
+#    			  }
+
+
+
+		   ]
+
+	   }
+   ]
+
+}
+
+
+
+
+DEF	openTime TimeSensor	{ cycleInterval	1 loop FALSE }
+DEF	openDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 0, 0 1 0 1.571]
+}
+
+DEF	closeTime TimeSensor { cycleInterval 2 loop FALSE }
+DEF	closeDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 1.571, 0 1 0 0]
+}
+
+ROUTE touchDoor.touchTime TO openTime.startTime
+ROUTE openTime.fraction_changed	TO openDoor.set_fraction
+ROUTE openDoor.value_changed TO	Door.rotation

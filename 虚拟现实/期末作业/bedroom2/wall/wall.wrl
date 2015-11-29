@@ -1,0 +1,271 @@
+#VRML V2.0 utf8
+Group {				  #room
+	children [
+		
+		DEF roomWall Transform {	  #forward
+			translation 150 150 -15
+			children [
+				Shape {		  
+					geometry Box{
+						size 300 300 30
+					}
+					appearance DEF wall Appearance {
+						material Material {
+							ambientIntensity 0
+							shininess 0
+						}
+						texture	ImageTexture {
+							url	"wall.jpg"
+						}
+					}
+				}
+			]
+		}
+		Group {		   	#behind
+			children [		 		  
+				Transform {
+					translation 100 150 315
+					children [
+						Shape {	
+							geometry Box{
+								size 200 300 30
+							}
+							appearance USE wall
+						}
+					]
+				}			 		  
+				Transform {
+					translation 265 250 315
+					children [
+						Shape {	
+							geometry Box{
+								size 130 100 30
+							}
+							appearance USE wall
+						}
+					]
+				}  			 		  
+				Transform {
+					translation 300 100 315
+					children [
+						Shape {	   
+							geometry Box{
+								size 60 200 30
+							}
+							appearance USE wall
+						}
+					]
+				}
+
+			]
+		} 
+		Transform {						 #left
+			scale 1.2 1 1
+			rotation 0 1 0 -1.57
+			translation	-30 0 -30
+			children [
+				USE roomWall
+			]
+		}
+		Group {		 #right1  
+			children [
+				Transform {						  
+					translation 307.5 150 0
+					children [
+						Shape	{
+							geometry Box{
+								size 15 300 60
+							}
+							appearance USE wall
+						}
+					]
+				}
+				Transform {
+					translation	307.5 250 65
+					children [
+						Shape	{		
+							geometry Box{
+								size 15 100 70
+							}
+							appearance USE wall
+						}
+					]
+				}
+			]
+		}
+		Transform {						   #right2
+			translation 315 150 115
+			children	[
+				Shape {				
+					geometry Box{
+						size 30 300 30
+					}
+					appearance USE wall
+				}
+			]
+		}
+		Transform {						   #right3
+			translation 315 250 200
+			children	[
+				Shape {		  
+					geometry Box{
+						size 30 100 200
+					}
+					appearance USE wall
+				}
+			]
+		}
+	]
+}
+
+Group{	  #toilet
+	children[
+		DEF toiletWall1 Transform {		#right
+			translation	457.5 150 42.5
+			children [
+				Shape	{
+					appearance	Appearance {
+						texture	ImageTexture {
+							url	"floor1.jpg"
+						}
+					}
+					geometry Box{
+						size 15 300 115
+					}
+					appearance USE wall
+				}
+			]
+		}
+		Group {		#left
+			children [
+				Transform {
+					translation	322.5 150 7.5
+					children [
+						Shape	{
+							appearance	Appearance {
+								texture	ImageTexture {
+									url	"floor1.jpg"
+								}
+							}
+							geometry Box{
+								size 15 300 45
+							}
+							appearance USE wall
+						}
+					]
+				}
+				Transform {
+					translation	322.5 250 65
+					children [
+						Shape	{
+							appearance	Appearance {
+								texture	ImageTexture {
+									url	"floor1.jpg"
+								}
+							}
+							geometry Box{
+								size 15 100 70
+							}
+							appearance USE wall
+						}
+					]
+				}
+			]
+		}
+		DEF toiletWall2 Transform {		#forward
+			translation 397.5 150 -7.5
+			children[
+				Shape	{
+					appearance	Appearance { 
+						texture	ImageTexture {
+							url	"floor1.jpg"
+						}
+					}
+					geometry Box{
+						size 135 300 15
+					}
+					appearance USE wall
+				}
+			]
+		}
+		Transform {					#behind
+			translation 0 0 115
+			children [
+				USE  toiletWall2
+			]
+		}
+		DEF toiletWall3 Transform {		#forward out
+			translation 390 150 -22.5
+			children[
+				Shape	{  
+					geometry Box{
+						size 150 300 15
+					}
+					appearance USE wall
+				}
+			]
+		}
+		Transform {					#behind out
+			translation 0 0 145
+			children [
+				USE  toiletWall3
+			]
+		}
+		Transform {			#right out
+			translation	472.5 150 50
+			children [
+				Shape	{	   
+					geometry Box{
+						size 15 300 160
+					}
+					appearance USE wall
+				}
+			]
+		}
+	]
+}
+
+Group {	 #balcony
+	children [ 
+		Transform {			#forward
+			translation	405 75 315
+			children [
+				Shape	{		
+					geometry Box{
+						size 150 150 30
+					}
+					appearance USE wall
+				}
+			]
+		} 
+		Transform {			#right
+			translation	465 75 215
+			children [
+				Shape	{	
+					geometry Box{
+						size 30 150 170
+					}
+					appearance USE wall
+				}
+			]
+		}
+	]
+}
+
+Transform {	
+	translation	225 -2.5 150
+	children [
+		Shape	{
+			appearance	Appearance {
+				texture	ImageTexture {
+					url	"floor.jpg"
+				}
+			}
+			geometry Box{
+				size 510 5 360
+			}
+			appearance USE wall
+		}
+	]
+}
+

@@ -1,0 +1,177 @@
+#VRML V2.0 utf8
+
+Group {#closet
+	children[
+		Transform {
+			translation 100 197.5 30
+			children[
+				Shape {
+					appearance Appearance	{
+						texture ImageTexture {
+							url "wall1.jpg"
+						}
+					}
+					geometry Box {
+						size 200 5 60
+					}
+				}
+			]
+		}
+		DEF leftBoard Transform {
+			translation 2.5 97.5 32.5
+			children[
+				Shape {
+					appearance Appearance	{
+						texture ImageTexture {
+							url "wall1.jpg"
+						}
+					}
+					geometry Box {
+						size  5 195 55
+					}
+				}
+			]
+		}
+		Transform {
+			translation 195 0 0
+			children[	 
+				USE leftBoard
+			]
+		}
+
+
+		
+		Transform {
+			rotation 0 0 1 1.57
+			translation 100 162.5 32.5
+			children[
+				Shape {
+					appearance Appearance	{ 
+						material Material {
+							diffuseColor .47 .52 .58
+							specularColor 1 1 1
+							ambientIntensity .123
+							shininess .13
+						}
+					}
+					geometry Cylinder {
+						height	190
+						radius	2.5
+					}
+				}
+			]
+		}
+	]
+}
+
+Group {
+	children [	
+		DEF	left Transform {
+			children [
+				DEF	leftDoor Transform {
+					translation 49.95 98 2
+					children[
+						Shape {
+							appearance Appearance	{
+								texture ImageTexture {
+									url "wall1.jpg"
+								}
+							}
+							geometry Box {
+								size  99.9 195.6 2
+							}
+						}
+					]
+				}
+				DEF	leftHandle Transform {
+					translation 88.4 107.5 -1
+					children[
+						Shape { 
+							geometry Box {
+								size  1 15 2
+							}
+						}
+					]
+				}
+			]
+		}			
+	    DEF right Transform {
+			center 200 0 0
+			children [
+				DEF	rightDoor Transform {
+					translation 100.1 0 0
+					children[	 
+						USE leftDoor
+					]
+				}
+				Transform {
+					translation 22.2 0 0
+					children[	 
+						USE leftHandle
+					]
+				}	
+			]
+		}
+		
+		
+		DEF touchDoor TouchSensor {}  
+	]
+   
+}
+DEF	openTime TimeSensor	{ cycleInterval	1 loop FALSE }
+DEF	openLeftDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 0, 0 1 0 0.8]
+}
+DEF	openRightDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 0, 0 1 0 -1.571]
+}
+
+DEF	closeTime TimeSensor { cycleInterval 1 loop FALSE }
+DEF	closeLeftDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 0.8, 0 1 0 0]
+}
+DEF	closeRightDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 -1.571, 0 1 0 0]
+}
+
+DEF control Script {
+	eventIn SFTime changeStatus  
+	field SFNode open USE openTime
+	field SFNode close USE closeTime
+	url	"javascript:
+	function initialize(){	
+		open.enabled=false;
+		close.enabled=true;
+	}
+	function changeStatus(){   
+		if(open.enabled){
+			open.enabled=false;
+			close.enabled=true;
+		}
+		else{
+			open.enabled=true;
+			close.enabled=false;
+		}
+	}
+
+	"
+	
+}
+
+ROUTE touchDoor.touchTime TO openTime.startTime
+ROUTE touchDoor.touchTime TO closeTime.startTime 
+ROUTE touchDoor.touchTime TO control. changeStatus
+ROUTE openTime.fraction_changed	TO	openLeftDoor.set_fraction
+ROUTE openTime.fraction_changed	TO	openRightDoor.set_fraction 
+ROUTE openLeftDoor.value_changed TO	left.rotation
+ROUTE 	openRightDoor.value_changed TO	right.rotation	
+
+ROUTE closeTime.fraction_changed	TO	closeLeftDoor.set_fraction
+ROUTE closeTime.fraction_changed	TO	closeRightDoor.set_fraction
+ROUTE closeLeftDoor.value_changed TO	left.rotation
+ROUTE 	closeRightDoor.value_changed TO	right.rotation
+

@@ -1,0 +1,87 @@
+#VRML V2.0 utf8
+Group {
+	children [
+		DEF foot Transform {
+			translation 2.5 15 2.5
+			children [
+				Shape {
+					appearance Appearance	{
+						texture ImageTexture {
+						 url "wooden.jpg"
+						}
+					}
+					geometry Cylinder {
+						height 30
+						radius 2.5
+					}
+				}
+			]
+		}
+		Transform {
+			translation 185 0 0
+			children [	
+				USE foot
+			]
+		}
+		Transform {
+			translation 185 0 105
+			children [	
+				USE foot
+			]
+		}
+		Transform {
+			translation 0 0 105
+			children [	
+				USE foot
+			]
+		}
+		Transform	{
+			translation	100 50 60
+			children [
+				Shape	{
+					appearance Appearance {
+						texture ImageTexture {
+							  url "sheet.jpg"
+						}
+					}
+					geometry Box{
+					 size 200 40 120
+					}
+				}
+			]
+		}
+
+		Transform	{
+			translation	120 80 60
+			children [
+				Shape	{
+					appearance Appearance {
+						texture ImageTexture {
+							  url "quilt.jpg"
+						}
+					}
+					geometry Box{
+					 size 160 20 120
+					}
+				}
+			]
+		}
+
+		Transform	{
+			translation	15 80 60
+			children [
+				Shape	{
+					appearance Appearance {
+						texture ImageTexture {
+							  url "pillow.jpg"
+						}
+					}
+					geometry Box{
+					 size 30 20 50
+					}
+				}
+			]
+		}
+
+	]
+}

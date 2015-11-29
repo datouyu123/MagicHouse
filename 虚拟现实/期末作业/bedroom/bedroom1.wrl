@@ -1,0 +1,341 @@
+#VRML V2.0 utf8
+
+DEF	floorwall Transform	{
+	translation	0 0 0
+	children [
+		Transform {
+			translation	-85 0 -50
+			children [
+			
+		Shape {
+			geometry Box {
+				size 580 5 700							    
+			}
+			appearance DEF m1 Appearance {
+				material Material {
+					ambientIntensity 0
+					shininess 0
+				}
+				texture	ImageTexture {
+					url	"maps/floor.jpg"
+				}
+				textureTransform TextureTransform {
+					scale 3 3
+				}
+			}
+		
+	}
+]
+		}
+		Transform {
+			translation	200 148 -50
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 700
+					}
+					appearance DEF wall Appearance {
+						material Material {
+							ambientIntensity 0
+							shininess 0
+						}
+						texture	ImageTexture {
+							url	"maps/wall.jpg"
+						}
+					}
+				}
+
+			]
+		}
+		Transform {
+			translation	-370 148 -50
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 700
+					}
+					appearance USE wall
+				}
+
+			]
+		}
+		Transform {
+			translation	130 148 -395
+			children [
+				Shape {
+					geometry Box {
+						size 130 300 10
+						
+					}
+					appearance USE wall
+				}
+			]
+		}
+		Transform {
+			translation	-196.5 148 -395
+			children [
+				Shape {
+					geometry Box {
+						size 335 300 10
+					}
+					appearance USE wall
+				}
+			]
+
+		}
+		Transform {
+			translation	18 253 -395
+			children [
+				Shape {
+					geometry Box {
+						size 95 90 10
+					}
+					appearance USE wall
+				}
+			]
+		}
+		DEF wall2 Transform {
+			translation	-85 148 300
+			children [
+				Shape {
+					geometry Box {
+						size 570 300 10
+					}
+					appearance  Appearance {
+						material Material {
+							ambientIntensity 0
+						}
+						texture	ImageTexture {
+							url	"maps/wall.jpg"
+						}
+					}
+				}
+			]
+		}
+
+
+	]
+}
+Transform {
+	translation 0 150 0
+	rotation 0 0 0 0
+	children [
+		        Viewpoint {
+				position 20 0 -550		 #near door
+				orientation	0 1 0 3.14
+				description	"bedroom_door"
+				jump FALSE
+		    	}  
+		  Viewpoint {
+				position 20 0 -250		 
+				orientation	0 1 0 3.14
+				description	"bedroom_comein"
+				jump FALSE
+		    	}      
+		Viewpoint {
+		position 50 0 -250		 
+		orientation	0 1 0 1.57
+		description	"bedroom_turnright"
+		jump FALSE
+		}
+		Viewpoint {
+		position 50 0 -200		 
+		orientation	0 1 0 3.14
+		description	"bedroom_turnleft"
+		jump FALSE
+		}
+		Viewpoint {
+		position 50 0 0		 
+		orientation	0 1 0 3.14
+		description	"bedroom_gostraight"
+		jump FALSE
+		}
+	        	  
+			
+	]
+}
+DEF toilet Transform {
+		translation	  -265 5 190
+		scale 1 1 1
+		rotation 0 1 0 -1.57
+		children [
+		Switch	{
+				choice [
+		
+					Inline {url "bathroom/bathroom.wrl"}
+					]
+				whichChoice  0
+				}
+		]
+	}
+Transform {
+	translation 0 150 0
+	rotation 0 0 0 0
+	children [
+		        Viewpoint {
+				position 50 0 0		 
+				orientation	0 1 0 0
+				description	"gooutoftoilet"
+				jump FALSE
+		    	}  
+		  Viewpoint {
+				position 50 0 -500		 
+				orientation	0 1 0 0
+				description	"bedroom_gostraight"
+				jump FALSE
+		    	}      
+		
+	        	  
+			
+	]
+}
+DEF bed Transform {
+		translation	  -245 5 -205
+		scale 0.1 0.1 0.1
+		rotation 0 1 0 0
+		children [
+		Switch	{
+				choice [
+		
+					Inline {url "bed.wrl"}
+					]
+				whichChoice  0
+				}
+		]
+	}
+DEF lamp Transform {
+	translation	  -335 155 -185
+	scale 0.2 0.2 0.2
+	rotation 0 1 0 1.57
+	children [
+	Switch	{
+			choice [
+	
+				Inline {url "lamp.wrl"}
+				]
+			whichChoice  0
+			}
+	]
+}
+DEF curtain Transform {
+	translation	  60 105 280
+	scale 0.05 0.05 0.05
+	rotation 0 1 0 3.14
+	children [
+	Switch	{
+			choice [
+	
+				Inline {url "curtain.wrl"}
+				]
+			whichChoice  0
+			}
+	]
+}
+DEF	door Transform {
+	translation	60 105 -395
+	children [
+		DEF	doorframe1 Transform	{
+			translation	0 0 0
+			children [
+				Shape {
+					geometry Box {
+						size 8 210 14
+					}
+					appearance DEF a7 Appearance {
+						material Material {}
+						texture	ImageTexture {
+							url	"maps/door1.jpg"
+						}
+					}
+				}
+
+			]
+		}
+		Transform {
+			translation	-90 0 0
+			children USE doorframe1
+		}
+		Transform {
+			translation	-45 105 0
+			children [
+				Shape {
+					geometry Box {
+						size 98 8 14
+					}
+					appearance USE a7
+				}
+			]
+		}
+DEF	door1	Transform {
+			translation	0 0 0
+			rotation 0 0 0 0
+			children [
+					Transform {
+			translation	-45 1 0
+			children [
+				Shape {
+					geometry Box {
+						size 81 200 10
+					}
+					appearance USE a7
+				}
+
+			]
+		}
+		Transform {
+			rotation 1 0 0 1.57
+			translation	-75 0 0
+			children [
+				Shape {
+					geometry Cylinder {
+						radius 3.5
+						height 18
+					}
+					appearance Appearance {
+						material Material {
+							diffuseColor .15 .15 .15
+							specularColor .92 .91 .89
+							ambientIntensity 0
+							shininess .06
+						}
+					}
+				}
+			]
+		}
+		
+
+			]
+		}
+	
+	]
+}
+DEF	sensor ProximitySensor {					  #接近传感器设定感知区域
+	 center 60 105 -395
+			size 200 306 400
+		}
+
+
+DEF	openTime TimeSensor	{ cycleInterval	2 loop FALSE }
+DEF	openDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 0, 0 1 0 1.571]
+}
+
+DEF	closeTime TimeSensor { cycleInterval 2 loop FALSE }
+DEF	closeDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 1.571, 0 1 0 0]
+}
+
+#ROUTE touchDoor.touchTime TO openTime.startTime
+#ROUTE openTime.fraction_changed	TO openDoor.set_fraction
+#ROUTE openDoor.value_changed TO	door1.rotation
+
+
+ROUTE sensor.enterTime TO openTime.startTime
+ROUTE openTime.fraction_changed TO	openDoor.set_fraction
+ROUTE openDoor.value_changed TO door1.rotation
+
+ROUTE sensor.exitTime TO closeTime.startTime
+ROUTE closeTime.fraction_changed TO	closeDoor.set_fraction
+ROUTE closeDoor.value_changed TO door1.rotation

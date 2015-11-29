@@ -1,0 +1,118 @@
+#VRML V2.0 utf8
+
+Group { #small
+	children [
+		Transform {
+		 translation 30 59 30
+		 children[
+			 Shape {
+				 appearance Appearance	{
+					 texture ImageTexture {
+						 url "wall1.jpg"
+					 }
+				 }
+				 geometry Box {
+				  size  60 2 60
+				 }
+			 }
+		 ]
+		}
+		DEF	leftBoard Transform {
+		 translation 3 30 30
+		 children[
+			 Shape {
+				 appearance Appearance	{
+					 texture ImageTexture {
+						 url "wall1.jpg"
+					 }
+				 }
+				 geometry Box {
+				  size  2 56 56
+				 }
+			 }
+		 ]
+		}
+		Transform {
+		 translation 54 0 0
+		 children[	 
+			 USE leftBoard
+		 ]
+		}
+		DEF	upBoard Transform {
+		 translation 30 56 31 
+		 children[
+			 Shape {
+				 appearance Appearance	{
+					 texture ImageTexture {
+						 url "wall1.jpg"
+					 }
+				 }
+				 geometry Box {
+				  size  52 4 54
+				 }
+			 }
+		 ]
+		}
+		Transform {
+		 translation 0 -26 0
+		 children[	 
+			 USE upBoard
+		 ]
+		}
+		Transform {
+		 translation 0 -52 0
+		 children[	 
+			 USE upBoard
+		 ]
+		}
+		Transform {
+		 translation 30 30 3 
+		 children[
+			 Shape {
+				 appearance Appearance	{
+					 texture ImageTexture {
+						 url "wall1.jpg"
+					 }
+				 }
+				 geometry Box {
+				  size  52 56 2
+				 }
+			 }
+		 ]
+		} 
+		DEF	foot Transform {
+		 translation 3 1 3 
+		 children[
+			 Shape {
+				 appearance Appearance	{
+					 texture ImageTexture {
+						 url "wall1.jpg"
+					 }
+				 }
+				 geometry Box {
+				  size  2 2 2
+				 }
+			 }
+		 ]
+		}
+		Transform {
+		 translation 54 0 0
+		 children[	 
+			 USE foot
+		 ]
+		}
+		Transform {
+		 translation 0 0 54
+		 children[	 
+			 USE foot
+		 ]
+		}
+		Transform {
+		 translation 54 0 54
+		 children[	 
+			 USE foot
+		 ]
+		}
+
+	]
+}

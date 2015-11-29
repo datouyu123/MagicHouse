@@ -1,0 +1,93 @@
+#VRML V2.0 utf8
+
+DEF door Transform {
+	translation	35 100 2.5
+	center 35 0 0
+	children [
+		
+		Shape {
+			appearance Appearance {
+				texture	ImageTexture {
+					url	"wooden.jpg"
+				}
+			}  
+			geometry Box{
+				size 70 200 5
+			}
+		}
+		DEF outHandle Transform {
+			translation	-25 0 5
+			rotation 1 0 0 1.571
+			children [
+				Shape {
+					appearance Appearance	{
+						material Material {
+							diffuseColor .37 .37 .37
+							specularColor .89 .89 .89
+							ambientIntensity .1
+							shininess .13
+						}
+					}
+					geometry Cylinder {
+						radius 3
+						height 5
+					}
+				}	 
+			]
+		}
+		Transform {
+			translation	0 0 -10
+			children [
+				USE outHandle
+			]
+		}
+		DEF	touchDoor TouchSensor {}
+
+	]
+}
+
+DEF	openTime TimeSensor	{ cycleInterval	1 loop FALSE }
+DEF	openDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 0, 0 1 0 -1.571]
+}
+
+DEF	closeTime TimeSensor { cycleInterval 1 loop FALSE }
+DEF	closeDoor OrientationInterpolator {
+	key	[0 1]
+	keyValue [0 1 0 -1.571, 0 1 0 0]
+}
+
+
+DEF control Script {
+	eventIn SFTime changeStatus  
+	field SFNode open USE openTime
+	field SFNode close USE closeTime
+	url	"javascript:
+	function initialize(){	
+		open.enabled=false;
+		close.enabled=true;
+	}
+	function changeStatus(){   
+		if(open.enabled){
+			open.enabled=false;
+			close.enabled=true;
+		}
+		else{
+			open.enabled=true;
+			close.enabled=false;
+		}
+	}
+
+	"
+	
+}
+
+ROUTE touchDoor.touchTime TO openTime.startTime
+ROUTE touchDoor.touchTime TO closeTime.startTime 
+ROUTE touchDoor.touchTime TO control. changeStatus
+ROUTE openTime.fraction_changed	TO	openDoor.set_fraction 
+ROUTE openDoor.value_changed TO	door.rotation 
+
+ROUTE closeTime.fraction_changed	TO	closeDoor.set_fraction
+ROUTE closeDoor.value_changed TO	door.rotation

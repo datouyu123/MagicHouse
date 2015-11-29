@@ -1,0 +1,345 @@
+#VRML V2.0 utf8
+NavigationInfo {
+	speed 0.4
+}
+PointLight {
+	on TRUE
+	radius 50
+	intensity .5
+}
+
+DirectionalLight {
+   direction -1 -1 -1
+   on TRUE
+   intensity 1
+  
+}
+
+DirectionalLight {
+   direction +1 +1 +1
+   on TRUE
+   intensity 1
+   
+}
+
+Transform{
+	translation	-1300 0 600
+	scale 0.1 0.1 0.1
+	children [
+		DEF floor Transform {
+			translation	0 -15 0 
+			children [
+				Shape {
+					geometry Box {
+					  size 1500 10 1700
+					}
+					appearance Appearance {
+						material Material {
+							ambientIntensity 0
+							shininess 0
+						}
+					texture	ImageTexture {
+					url	"livingroom/maps/floor.jpg"
+				}
+				textureTransform TextureTransform {
+					scale 3 3
+				}
+					}
+				}
+			]
+		}
+		DEF	wall Transform {	
+			translation	-460 148 855
+			children [
+				Shape {
+					geometry Box {
+					   size	580 300 5
+					}
+					appearance DEF walls Appearance {
+						material Material {
+							ambientIntensity 0
+							shininess 0
+						}
+						texture	ImageTexture {
+							url	"maps/wall-1.jpg"
+						}
+					}
+				}
+
+			]
+		}
+		Transform {
+			translation	360 148 855
+			children [
+				Shape {
+					geometry Box {
+					   size	780 300 5
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+		Transform {
+		translation -170 0 855
+		 scale 1.2 1.2 1
+		 rotation	0 1 0 0
+		children	[
+			 Inline {
+			   url "door.wrl"
+		  }
+		 ]
+		}
+		Transform {
+			translation	0 148 -850
+			children [
+				Shape {
+					geometry Box {
+					   size	1500 300 5
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+		Transform {
+			translation	755 148 0
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 1700
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+		Transform {
+			translation	-755 148 0
+			children [
+				Shape {
+					geometry Box {
+					   size	10 300 1700
+					}
+					appearance USE walls
+				}
+
+			]
+		}
+		Viewpoint {
+				position 0 150 3000
+				orientation	0 0 0 0
+				description	"start"
+				jump FALSE
+			}
+		Viewpoint {
+			position -150 150 450
+			orientation	0 0 0 0
+			description	"comein"
+			jump FALSE
+		}
+		Viewpoint {
+			position -150 150 450
+			orientation	0 1 0 -1.57
+			description	"turnright"
+			jump FALSE
+		}
+
+		DEF bedroom1 Transform {
+		translation	  450 -5 480
+		scale 1 1 1
+		rotation 0 1 0 1.57
+		children [
+		Switch	{
+				choice [
+		
+					Inline {url "bedroom/bedroom1.wrl"}
+					]
+				whichChoice  0
+				}
+			]
+		}
+		
+		Viewpoint {
+			position 0 150 500
+			orientation	0 1 0 1.57
+			description	"comeoutofbathroom"
+			jump FALSE
+		}
+		DEF study Transform {
+		translation	  -450 0 650
+		scale 1 1 1
+		rotation 0 1 0 -1.57
+		children [
+		Switch	{
+				choice [
+					Inline {url "study/study.wrl"}
+				]
+				whichChoice  0
+				}
+			]
+		}
+		Viewpoint {
+			position -150 150 650
+			orientation	0 1 0 -1.57
+			description	"comeoutofstudroom"
+			jump FALSE
+		}
+		Viewpoint {
+			position -150 150 650
+			orientation	0 1 0 0
+			description	"comeoutofstudyroomturnleft"
+			jump FALSE
+		}
+		Viewpoint {
+			position -150 150 300
+			orientation	0 1 0 0
+			description	"comeoutofstudyroomgostraight"
+			jump FALSE
+		}
+		Viewpoint {
+			position -150 150 300
+			orientation	0 1 0 -0.78
+			description	"turnright"
+			jump FALSE
+		}
+		Viewpoint {
+			position -150 150 300
+			orientation	0 1 0 0.78
+			description	"turnleft"
+			jump FALSE
+		}
+		Viewpoint {
+		position -150 150 200
+		orientation	0 1 0 1.57
+		description	"turnleft"
+		jump FALSE
+		}
+		Viewpoint {
+		position -650 150 200
+		orientation	0 1 0 1.57
+		description	"gostraight"
+		jump FALSE
+		}
+		Viewpoint {
+		position -650 150 200
+		orientation	0 1 0 0
+		description	"turnright"
+		jump FALSE
+		}
+		Viewpoint {
+		position -620 150 -400
+		orientation	0 1 0 0
+		description	"gostraighttokitchen"
+		jump FALSE
+		}
+		DEF kitchen Transform {
+		translation	  -650 0 -660
+		scale 1 1 1
+		rotation 0 1 0 3.14
+		children [
+		Switch	{
+				choice [
+					Inline {url "kitchen/kitchen.wrl"}
+				]
+				whichChoice  0
+				}
+			]
+		}
+		Viewpoint {
+		position -50 150 -400
+		orientation	0 1 0 -1.57
+		description	"gostraighttosofacom"
+		jump FALSE
+		}
+		Viewpoint {
+		position 460 150 -400
+		orientation	0 1 0 -1.57
+		description	"gostraighttobedroom2"
+		jump FALSE
+		}
+		Viewpoint {
+		position 460 150 -400
+		orientation	0 1 0 0
+		description	"gostraighttobedroom2turnleft"
+		jump FALSE
+		}
+		DEF bedroom2 Transform {
+		translation	  260 0 -820
+		scale 1 1 1
+		rotation 0 1 0 0
+		children [
+		Switch	{
+				choice [
+					Inline {url "bedroom2/bedroom2.wrl"}
+				]
+				whichChoice  0
+				}
+			]
+		}
+		Viewpoint {
+		position 460 150 -400
+		orientation	0 1 0 3.14
+		description	"gooutofbedroom2"
+		jump FALSE
+		}
+		Viewpoint {
+		position 0 2700 0
+		orientation	1 0 0 -1.57
+		description	"godview"
+		jump FALSE
+		}
+		DEF sofacom Transform {
+		translation	  100 0 -100
+		scale 1.2 1.2 1.2
+		rotation 0 1 0 1.57
+		children [
+		Switch	{
+				choice [
+					Inline {url "livingroom/sofacom.wrl"}
+				]
+				whichChoice  0
+				}
+			]
+		}
+		DEF canzuo Transform {
+		translation	  -480 0 -100
+		scale 0.15 0.15 0.15
+		rotation 0 1 0 0
+		children [
+		Switch	{
+				choice [
+					Inline {url "livingroom/canzhuo.wrl"}
+				]
+				whichChoice  0
+				}
+			]
+		}
+		DEF TV Transform {
+		translation	  700 200 -115
+		scale 7.5 7.5 7.5
+		rotation 0 1 0 1.57
+		children [
+		Switch	{
+				choice [
+					Inline {url "livingroom/TV.wrl"}
+				]
+				whichChoice  0
+				}
+			]
+		}
+		DEF TVbench Transform {
+		translation	  700 0 -115
+		scale 0.2 0.2 0.2
+		rotation 0 1 0 -1.57
+		children [
+		Switch	{
+				choice [
+					Inline {url "livingroom/TVbench.wrl"}
+				]
+				whichChoice  0
+				}
+			]
+		}
+	]
+}

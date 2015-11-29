@@ -1,0 +1,107 @@
+#VRML V2.0 utf8
+
+   #TV
+PROTO TV [
+	field SFVec3f position 0 0 0
+	field SFVec3f scale 1 1 1
+	field SFRotation rotation 0 1 0 1.571
+]
+{
+	Transform {
+		translation	IS position
+		scale IS scale
+		rotation IS	rotation
+		children [
+Transform {#sony logo
+	scale 2 2 2
+	 translation 0.5 -10.5 1 
+	 rotation 0 1 0 1.57
+	children [
+	Shape {
+ appearance Appearance {
+
+	 material Material { 
+		diffuseColor 0.9 0.9 0.9}
+    }
+	geometry Text {
+	     fontStyle FontStyle {
+		family   "SANS"
+		style     "PLAIN"
+		size   1
+		spacing	1.0
+		horizontal     TRUE
+		leftToRight	  TRUE
+		topToBottom	TRUE
+	 
+}
+		  
+		string ["sony"]
+	    length []
+	    maxExtent 5
+	}
+}]
+}
+Transform {	 
+       translation 0 9.5 0  
+	   rotation 0 1 0 -1.57
+	   scale 34 1 1
+		children [ 
+		 DEF box Shape {	  
+			 appearance Appearance { 
+				 material Material {
+		   diffuseColor 0.3 0.3 0.3
+	   }
+	   }
+	   geometry  Box {
+	   size 1 1 1
+	   }
+   }
+]
+}
+Transform {
+	translation	 0 -10 0
+	rotation 0 1 0 -1.571
+	scale 34 2 1
+	children [
+		USE	box
+	]
+}
+Transform {
+	translation	 0 0 16.5
+	scale 1 20 1
+	children [
+		USE	box
+	]
+}
+Transform {
+	translation	 0 0 -16.5
+	scale 1 20 1
+	children [
+		USE	box
+	]
+}
+Transform {	  	 
+	rotation 0 1 0 -1.57
+	children [				  
+		Shape {				  
+			appearance Appearance {	
+				texture MovieTexture {		
+			   	 url "image/gakki_clip.avi"	
+				 loop TRUE		
+	             speed 1}	  
+			 }				
+			 geometry Box {			 
+			     size 32 18 1		 
+			 }			
+	 		
+		 }	  
+	 ]		
+
+}
+]
+}}
+TV {
+
+}
+
+

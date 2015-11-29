@@ -1,0 +1,251 @@
+#VRML V2.0 utf8
+
+DEF	downPiece Transform{
+translation	85 0.5 5
+children[
+Shape{
+appearance	Appearance{
+
+}
+geometry Box{
+size 170 1 10
+}
+}
+]
+}
+Transform{
+translation 0 199 0
+children[
+USE downPiece
+]
+}
+DEF	leftPiece Transform{
+translation 0.5 100 5
+children[
+Shape{
+appearance	Appearance{
+
+}
+geometry Box{
+size 1 198 10
+}
+}
+]
+}
+Transform{
+translation 169 0 0
+children[
+USE leftPiece
+]
+}
+
+DEF leftDoor Transform{
+children[
+DEF downBlock Transform{
+translation	45.5 6 7.5
+children[
+Shape{
+appearance Appearance{
+material Material{
+diffuseColor .57 .58 .58
+specularColor .67 .46 .44
+ambientIntensity .137
+shininess .17
+}
+}
+geometry Box{
+size 89 10 5
+}
+}
+]
+}
+Transform{
+translation	0 188 0
+children[
+USE downBlock
+]
+}
+DEF leftBlock Transform{
+translation	6 100 7.5
+children[
+Shape{
+appearance Appearance{
+material Material{
+diffuseColor .57 .58 .58
+specularColor .67 .46 .44
+ambientIntensity .137
+shininess .17
+}
+}
+geometry Box{
+size 10 178 5
+}
+}
+]
+}
+Transform{
+translation	79 0 0
+children[
+USE leftBlock
+]
+}
+DEF leftGlass Transform{
+translation	45.5 100 7.5
+children[
+Shape{
+appearance Appearance{
+material Material{
+diffuseColor .863 .871 .953
+specularColor .94 .94 .94
+emissiveColor 0 .36 .27
+ambientIntensity 0
+shininess .23
+transparency .68
+}
+}
+geometry Box{
+size 69 178 1
+}
+}
+]
+}
+DEF	leftTouch TouchSensor{}
+]
+}
+
+DEF rightDoor Transform{
+translation	79 0 -5
+children[
+DEF downBlock2 Transform{
+translation	45.5 6 7.5
+children[
+Shape{
+appearance Appearance{
+material Material{
+diffuseColor .57 .58 .58
+specularColor .67 .46 .44
+ambientIntensity .137
+shininess .17
+}
+}
+geometry Box{
+size 89 10 5
+}
+}
+]
+}
+Transform{
+translation	0 188 0
+children[
+USE downBlock
+]
+}
+DEF leftBlock2 Transform{
+translation	6 100 7.5
+children[
+Shape{
+appearance Appearance{
+material Material{
+diffuseColor .57 .58 .58
+specularColor .67 .46 .44
+ambientIntensity .137
+shininess .17
+}
+}
+geometry Box{
+size 10 178 5
+}
+}
+]
+}
+Transform{
+translation	79 0 0
+children[
+USE leftBlock
+]
+}
+DEF leftGlass2 Transform{
+translation	45.5 100 7.5
+children[
+Shape{
+appearance Appearance{
+material Material{
+diffuseColor .863 .871 .953
+specularColor .94 .94 .94
+emissiveColor 0 .36 .27
+ambientIntensity 0
+shininess .23
+transparency .68
+}
+}
+geometry Box{
+size 69 178 1
+}
+}
+]
+}
+DEF	rightTouch TouchSensor{}
+]
+}
+DEF	openLeftTime TimeSensor{cycleInterval	1 loop FALSE}
+DEF	openLeftDoor PositionInterpolator{
+key[0 1]
+keyValue[0 0 0,69 0 0]
+}
+
+DEF	closeLeftTime TimeSensor{cycleInterval 1 loop FALSE}
+DEF	closeLeftDoor PositionInterpolator{
+key[0 1]
+keyValue[69 0 0,0 0 0]
+}
+
+DEF	openRightTime TimeSensor{cycleInterval	1 loop FALSE}
+DEF	openRightDoor PositionInterpolator{
+key[0 1]
+keyValue[0 0 0,-69 0 0]
+}
+
+DEF	closeRightTime TimeSensor{cycleInterval 1 loop FALSE}
+DEF	closeRightDoor PositionInterpolator{
+key[0 1]
+keyValue[-69 0 0,0 0 0]
+}
+
+
+DEF control Script{
+eventIn SFTime changeLeft
+field SFNode ol USE openLeftTime
+field SFNode cl USE closeLeftTime
+url	"javascript:
+function initialize(){
+ol.enabled=false;
+cl.enabled=true;
+or.enabled=false;
+cr.enabled=true;
+}
+function changeLeft(){
+if(ol.enabled ){
+ol.enabled=false;
+cl.enabled=true;
+or.enabled=false;
+cr.enabled=true;
+}
+else{
+ol.enabled=true;
+cl.enabled=false;
+or.enabled=true;
+cr.enabled=false;
+}
+}
+
+"
+
+}
+
+ROUTE leftTouch.touchTime TO openLeftTime.startTime
+ROUTE leftTouch.touchTime TO closeLeftTime.startTime
+ROUTE leftTouch.touchTime TO control. changeLeft
+ROUTE openLeftTime.fraction_changed	TO	openLeftDoor.set_fraction
+ROUTE openLeftDoor.value_changed TO	leftDoor.translation
+ROUTE closeLeftTime.fraction_changed	TO	closeLeftDoor.set_fraction
+ROUTE closeLeftDoor.value_changed TO	leftDoor.translation
